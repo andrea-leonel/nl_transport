@@ -8,3 +8,5 @@ select
     _batched_at as batched_at
 
 from {{ source('jaffle_shop_stripe', 'payment') }}
+
+

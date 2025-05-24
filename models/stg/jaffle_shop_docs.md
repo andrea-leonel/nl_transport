@@ -10,4 +10,16 @@ One of the following values:
 | return pending | Customer indicated they want to return this item |
 | returned       | Item has been returned                           |
 
-{% end docs %}
+{% enddocs %}
+
+{% docs payment_status %}
+
+One of the following values: 
+
+| status         | definition                                       |
+|----------------|--------------------------------------------------|
+| success        | Payment went through successfully                |
+| fail           | Payment did not go through                       |
+
+{% enddocs %}
+
