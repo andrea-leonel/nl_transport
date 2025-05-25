@@ -22,7 +22,7 @@ models:
         tests:
           - unique
           - not_null
-      - name: status
+      - name: order_status
         description: '{{ doc("order_status") }}'
         tests:
           - accepted_values:
@@ -40,12 +40,3 @@ models:
               field: customer_id
       - name: order_date
         description: date the order was placed in YYYY-MM-DD
-
-  - name: stg_stripe__payments
-    description: information of payments made
-    columns:
-        - name: payment_method
-          description: payment method used in the transaction
-        - name: status
-          description: '{{ doc("payment_status") }}'
-            
