@@ -29,7 +29,7 @@ customer_lifetime as (
 
     select
         a.customer_id,
-        sum(case when b.status = 'success' then a.amount end) as lifetime_value
+        sum(case when b.order_status = 'success' then a.order_value_dollars end) as lifetime_value
     from {{ ref("fct_orders") }} a
     left join {{ ref("stg_jaffle_shop__orders")}} b using (order_id)
     group by 1
@@ -40,8 +40,8 @@ final as (
 
     select
         customers.customer_id,
-        customers.first_name,
-        customers.last_name,
+        customers.givenname,
+        customers.surname,
         customer_orders.first_order_date,
         customer_orders.most_recent_order_date,
         coalesce (customer_orders.number_of_orders, 0) as number_of_orders,

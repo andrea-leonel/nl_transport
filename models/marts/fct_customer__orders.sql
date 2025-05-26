@@ -62,12 +62,14 @@ customer_order_history as (
 final as (
     select 
         orders.order_id,
-        customers.customer_id,
-        customers.surname,
-        customers.givenname,
-        customer_order_history.first_non_returned_order_date,
-        customer_order_history.order_count,
-        customer_order_history.total_lifetime_value,
+        {% set customer_columns = ['customer_id','surname','givenname'] %}
+        {%- for column in customer_columns -%}
+        customers.{{column}},
+        {% endfor -%}
+        {% set history_columns = ['first_non_returned_order_date','order_count','total_lifetime_value'] %}
+        {%- for column in history_columns -%}
+        customer_order_history.{{column}},
+        {% endfor -%}
         payments.order_value_dollars,
         order_status,
         payments.payment_status
