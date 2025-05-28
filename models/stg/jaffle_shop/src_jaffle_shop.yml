@@ -28,3 +28,7 @@ sources:
             tests:
               - unique
               - not_null
+      - name: supplies
+        description: raw supply data
+      - name: items
+        description: raw item data

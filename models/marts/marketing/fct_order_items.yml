@@ -1,0 +1,18 @@
+models:
+  - name: fct_order_items.yml
+    config:
+      contract:
+        enforced: true
+      columns:
+        - name: id
+          data_type: varchar
+          constraints: 
+            - type: not_null
+        - name: order_id
+          data_type: varchar
+          constraints: 
+            - type: not_null
+        - name: sku
+          data_type: varchar
+          constraints: 
+            - type: not_null
