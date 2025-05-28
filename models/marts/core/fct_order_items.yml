@@ -1,5 +1,5 @@
 models:
-  - name: fct_order_items.yml
+  - name: fct_order_items
     config:
       contract:
         enforced: true
