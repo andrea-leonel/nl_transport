@@ -6,6 +6,9 @@ models:
       columns:
         - name: product_id
           data_type: varchar
+          tests:
+            - unique
+            - not_null
           constraints: 
             - type: not_null
         - name: product_name
@@ -28,6 +31,8 @@ models:
             - type: not_null
         - name: supply_cost
           data_type: number
+          tests:
+            - not_null
           constraints: 
             - type: not_null
         - name: is_drink_item
