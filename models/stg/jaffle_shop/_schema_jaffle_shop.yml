@@ -1,0 +1,96 @@
+version: 2
+
+models:
+  - name: stg_jaffle_shop__customers
+    description: one unique customer per row
+    columns:
+      - name: customer_id
+        description: primary key
+        tests:
+          - unique
+          - not_null
+      - name: first_name
+        description: first name of customer
+      - name: last_name
+        description: last name of customer abbreviated
+
+  - name: stg_jaffle_shop__orders
+    description: one unique order per row
+    columns:
+      - name: order_id
+        description: primary key
+        tests:
+          - unique
+          - not_null
+      - name: order_status
+        description: '{{ doc("order_status") }}'
+        tests:
+          - accepted_values:
+              values:
+                - 'shipped'
+                - 'completed'
+                - 'return_pending'
+                - 'returned'
+                - 'placed'
+      - name: customer_id
+        description: foreign key to customers table
+        tests:
+          - unique
+          - relationships:
+              to: ref('stg_jaffle_shop__customers')
+              field: customer_id
+      - name: order_date
+        description: date the order was placed in YYYY-MM-DD
+
+  - name: stg_jaffle_shop__items
+    description: one unique item per row
+    columns:
+      - name: id
+        data_type: varchar
+        tests:
+          - unique
+          - not_null
+      - name: order_id
+        data_type: varchar
+      - name: sku
+        data_type: varchar
+        tests:
+          - relationships:
+              to: ref('stg_jaffle_shop__supplies')
+              field: sku
+
+  - name: stg_jaffle_shop__supplies
+    description: one unique item per row
+    columns:
+      - name: id
+        data_type: varchar
+        tests:
+          - not_null
+        constraints: 
+          - type: not_null
+      - name: product_name
+        data_type: varchar
+        constraints: 
+          - type: not_null
+      - name: product_type
+        data_type: varchar
+        constraints: 
+          - type: not_null
+      - name: product_description
+        data_type: varchar
+      - name: product_price
+        data_type: int
+        constraints: 
+          - type: not_null
+      - name: is_food_item
+        data_type: boolean
+        constraints: 
+          - type: not_null
+      - name: supply_cost
+        data_type: number
+        constraints: 
+          - type: not_null
+      - name: is_drink_item
+        data_type: boolean
+        constraints: 
+          - type: not_null

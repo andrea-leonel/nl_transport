@@ -14,20 +14,8 @@ sources:
       - name: customers
         description: raw customer data
         freshness: null
-        columns:
-          - name: id
-            description: primary key for customers data
-            tests:
-              - unique
-              - not_null
-
       - name: orders
         description: raw orders data
-        columns:
-          - name: id
-            tests:
-              - unique
-              - not_null
       - name: supplies
         description: raw supply data
       - name: items

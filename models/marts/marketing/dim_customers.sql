@@ -29,7 +29,7 @@ customer_lifetime as (
 
     select
         a.customer_id,
-        sum(case when b.order_status = 'success' then a.order_value_dollars end) as lifetime_value
+        sum(case when b.order_status = 'completed' then a.order_value_dollars end) as lifetime_value
     from {{ ref("fct_orders") }} a
     left join {{ ref("stg_jaffle_shop__orders")}} b using (order_id)
     group by 1
