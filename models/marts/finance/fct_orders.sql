@@ -5,6 +5,7 @@
 }}
 
 select 
+    -- adjusting fct_orders
     a.customer_id,
     a.order_id,
     a.order_status,
