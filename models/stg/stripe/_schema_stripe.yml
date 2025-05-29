@@ -1,0 +1,12 @@
+version: 2
+
+models:
+  
+  - name: stg_stripe__payments
+    description: information of payments made
+    columns:
+        - name: payment_method
+          description: payment method used in the transaction
+        - name: status
+          description: '{{ doc("payment_status") }}'
+            

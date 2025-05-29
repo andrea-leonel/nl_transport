@@ -1,0 +1,8 @@
+models:
+
+  - name: all_dates
+    description: date spine for 2020
+
+  - name: int_orders__pivot
+    description: pivoted orders by payment method
+  

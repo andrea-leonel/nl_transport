@@ -1,0 +1,33 @@
+models:
+
+  - name: fct_orders
+    description: on aggregation of orders and payments
+    latest_version: 1
+    columns:
+      - name: customer_id
+        data_type: varchar
+        constraints:
+          - type: not_null
+      - name: order_id
+        data_type: varchar
+        constraints:
+          - type: not_null
+      - name: order_status
+        data_type: varchar
+        constraints:
+          - type: not_null
+      - name: order_value_dollars
+        data_type: number
+        constraints:
+          - type: not_null
+    versions:
+      - v: 1
+        config:
+          alias: fct_orders
+      - v: 2
+        columns:
+          - name: amount_dollars
+            data_type: number
+          - include: all
+            exclude: [order_value_dollars]
+

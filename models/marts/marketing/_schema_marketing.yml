@@ -1,0 +1,4 @@
+models:
+
+  - name: dim_customers
+    description: customer information
